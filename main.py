@@ -1,5 +1,8 @@
+from mods.AG import *
+
 def main():
-  print 'I\'m the main'
+  Proy()
+  #print 'I\'m the main'
  
 if __name__=='__main__':
   main()
