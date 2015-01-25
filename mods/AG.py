@@ -23,13 +23,13 @@ class Proy:
   def __initPopulation(self,t):
     for i in range(t):
       gen = []
-      for j in range(4):
+      for j in range(self.height):
         gen.append([random.randint(0,3) for i in range(4)])
       self.cromosomas.append(gen)
 
   def simulate(self,t):
     self.__initPopulation(t)
-    print self.cromosomas
-
+    for c in self.cromosomas:
+      print c
 
 		
