@@ -1,4 +1,4 @@
-def apt_gen(cromosoma,w,h,zt,n):
+def apt_gen(cromosoma,w,h,zt):
 	wf=(w-4)/2
 	z=zt[i]*4 #vida zombie total
 	p=cromosoma.count(3)#potato-mine
