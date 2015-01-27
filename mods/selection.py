@@ -4,7 +4,6 @@ def apt_gen(cromosoma,w,h,zt):
 	p=cromosoma.count(3)#potato-mine
 	r=cromosoma.count(2)#repeater
 	n=cromosoma.count(1)#peashooter
-	damage=((r*2)+n)*wf
+	damage=((r*2)+n)*wf+(p*4)
 	zombie_survivors=damage-z
-	dz=zombie_survivors+(p*4)#no deberia ser -(p*4)?
-	return dz
+	return zombie_survivors
