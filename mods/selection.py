@@ -1,4 +1,4 @@
-def apt_gen_aprox(cromosoma,w,zt):
+def apt_gen_aprox(gen,w,zt):
 	wf=(w-4)/2
 	z=zt[i]*8 #vida zombie total
 	p=cromosoma.count(3)#potato-mine
@@ -8,7 +8,7 @@ def apt_gen_aprox(cromosoma,w,zt):
 	zombie_survivors=damage-z
 	return zombie_survivors
 
-def apt_simul_aprox(cromosoma,w,zt):
+def apt_simul_aprox(gen,w,zt):
 	z=zt[i]*8 #vida zombie total
 	p=cromosoma.count(3)#potato-mine
 	r=cromosoma.count(2)#repeater
