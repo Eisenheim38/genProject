@@ -1,6 +1,6 @@
 from selection import *
 from mutation import *
-#from cross import *
+from cross import *
 import random
 
 class Proy:
@@ -27,16 +27,16 @@ class Proy:
         gen.append([random.randint(0,3) for i in range(4)])
       self.cromosomas.append(gen)
 
-  def cruce(self,pc): 
+  def cruce(self,poblacion,pc): 
     nueva_poblacion=[]
-    while (len(self.cromosomas)>0):
-      if len(self.cromosomas)==1: #solo queda un individuo no es posible cruzarlo
-        nueva_poblacion.append(self.cromosomas[0])
+    while (len(poblacion)>0):
+      if len(poblacion)==1: #solo queda un individuo no es posible cruzarlo
+        nueva_poblacion.append(poblacion[0])
       else:
-        pareja1=self.cromosomas[random.randint(0,len(self.cromosomas)-1)] #seleccionamos la pareja 1 aleatoriamente
-        self.cromosomas.remove(pareja1);                #ya este individuo esta fuera de nuestra poblacion de cruce
-        pareja2=self.cromosomas[random.randint(0,len(self.cromosomas)-1)] #seleccionamos la pareja 2 aleatoriamente
-        self.cromosomas.remove(pareja2);                #ya este individuo esta fuera de nuestra poblacion de cruce
+        pareja1=poblacion[random.randint(0,len(poblacion)-1)] #seleccionamos la pareja 1 aleatoriamente
+        poblacion.remove(pareja1);                #ya este individuo esta fuera de nuestra poblacion de cruce
+        pareja2=poblacion[random.randint(0,len(poblacion)-1)] #seleccionamos la pareja 2 aleatoriamente
+        poblacion.remove(pareja2);                #ya este individuo esta fuera de nuestra poblacion de cruce
         if random.random() <= pc: #se calcula la probabilidad de cruce
           a=len(pareja1)
           n=a/2
@@ -47,14 +47,15 @@ class Proy:
         else:
           nueva_poblacion.append(pareja1)  # no hay cruce se clonan los individuos
           nueva_poblacion.append(pareja2)  
-    self.cromosomas = nueva_poblacion #se ha creado una nueva poblacion 
+    return nueva_poblacion #se ha creado una nueva poblacion 
 
   def simulate(self,t):
     self.__initPopulation(t)
     for c in self.cromosomas:
       print c
     print 'After cross'
-    self.cruce(0.7)
+    #self.cromosomas = cruce(self.cromosomas,0.7)
+    self.cromosomas = mutar(self.cromosomas,1)
     for c in self.cromosomas:
       print c
     #print len(self.cromosomas)

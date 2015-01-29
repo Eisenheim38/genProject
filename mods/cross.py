@@ -3,7 +3,7 @@ import random
 #modulo de cruce, recibe poblacion retorna cruce de poblacion
 #poblacion= individuos a cruzar , pc=probabilidad de cruce preferiblemente 0.7
 def cruce(poblacion,pc): 
-	nueva_poblacion=[[[]]]
+	nueva_poblacion=[]
 	while (len(poblacion)>0):
 		if len(poblacion)==1: #solo queda un individuo no es posible cruzarlo
 			nueva_poblacion.append(poblacion[0])
