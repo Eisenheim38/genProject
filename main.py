@@ -13,8 +13,9 @@ def main():
   for i in z:
     zf[i] = zf[i]+1
   #p = Proy(10,1,[1,1,1])
+  #print zf
   p = Proy(whz[0],whz[1],z)
-  p.simulate(10)
+  p.simulate(40)
  
 if __name__=='__main__':
   main()

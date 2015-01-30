@@ -20,7 +20,7 @@ class Proy:
     self.zombies=z
 
   #Creates population
-  def __initPopulation(self,t):
+  def __init_population(self,t):
     for i in range(t):
       gen = []
       for j in range(self.height):
@@ -50,12 +50,26 @@ class Proy:
     return nueva_poblacion #se ha creado una nueva poblacion 
 
   def simulate(self,t):
-    self.__initPopulation(t)
-    for c in self.cromosomas:
-      print c
-    print 'After cross'
+    self.__init_population(t)
+    i=0
+    indice = 0 #Debe ser sustituido por el indice max de las puntuaciones
+    solucion = False
+    solucion_deseada = 1 #numero en el que la solucion es perfecta
+    while (not solucion) and i!=1000:
+      puntuaciones = puntuar(self.cromosomas)
+      if puntuaciones.count(solucion_deseada)>=1:
+        solucion = True
+        indice = puntuaciones.index(solucion_deseada)
+      seleccionados = seleccionar(self.cromosomas,puntuaciones) #esto deberia ser una lista con la mitad de la poblacion de mejor puntuacion
+      cruzados = cruce(seleccionados,0.7)
+      cruzados = mutar(cruzados,0.1)
+      self.cromosomas = seleccionados + cruzados
+      i = i+1
+    print self.cromosomas[indice]
+    #for c in self.cromosomas:
+    #  print c
     #self.cromosomas = cruce(self.cromosomas,0.7)
-    self.cromosomas = mutar(self.cromosomas,1)
-    for c in self.cromosomas:
-      print c
+    #self.cromosomas = mutar(self.cromosomas,1)
+    #for c in self.cromosomas:
+    #  print c
     #print len(self.cromosomas)
