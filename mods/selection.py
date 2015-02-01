@@ -24,12 +24,13 @@ def puntuar(poblacion,w,zt):
 	lp=len(poblacion[0])
 	max_p=lp*w
 	points=0
-	puntuaciones=[]
+	puntuaciones=[[]]
 	for x in range(0,len(poblacion)):
 		for i in range(0,lp):
 			points=simul(poblacion[x][i],w,zt)+points
-		puntuaciones[x]=points/max_p
+		puntuaciones.append([points/max_p,x])
 		points=0
+	puntuaciones.sort()
 	return puntuaciones
 
 def seleccionar(poblacion,puntuaciones):
