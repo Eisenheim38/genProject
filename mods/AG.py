@@ -66,6 +66,8 @@ class Proy:
       cruzados = mutar(cruzados,0.1)
       self.cromosomas = seleccionados + cruzados
       i = i+1
+    print "indice :"+str(i)
+    print puntuaciones
     print self.cromosomas[indice]
     #for c in self.cromosomas:
     #  print c
