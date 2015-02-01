@@ -24,10 +24,10 @@ def puntuar(poblacion,w,zt):
 	lp=len(poblacion[0])
 	max_p=lp*w
 	points=0
-	puntuaciones=[[]]
-	for x in range(0,len(poblacion)):
-		for i in range(0,lp):
-			points=simul(poblacion[x][i],w,zt)+points
+	puntuaciones=[]
+	for x in range(len(poblacion)):
+		for i in range(lp):
+			points=simul(poblacion[x][i],w,zt,i)+points
 		puntuaciones.append([points/max_p,x])
 		points=0
 	sorted(puntuaciones,reverse=True)
@@ -36,7 +36,7 @@ def puntuar(poblacion,w,zt):
 def seleccionar(poblacion,puntuaciones):
 	return poblacion
 
-def simul(gen,w,zt):
+def simul(gen,w,zt,i):
 	z=zt[i]*8 #vida zombie total
 	p=gen.count(3)#potato-mine
 	r=gen.count(2)#repeater

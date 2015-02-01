@@ -14,7 +14,7 @@ def main():
     zf[i] = zf[i]+1
   #p = Proy(10,1,[1,1,1])
   #print zf
-  p = Proy(whz[0],whz[1],z)
+  p = Proy(whz[0],whz[1],z,zf)
   p.simulate(40)
  
 if __name__=='__main__':

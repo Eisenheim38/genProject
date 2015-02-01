@@ -14,10 +14,11 @@ class Proy:
 
   #Class initializer
   #needs int w, int h, list of int z
-  def __init__(self,w,h,z):
-    self.width=w
-    self.height=h
-    self.zombies=z
+  def __init__(self,w,h,z,zt):
+    self.width = w
+    self.height = h
+    self.zombies = z
+    self.zt = zt
 
   #Creates population
   def __init_population(self,t):
@@ -56,7 +57,7 @@ class Proy:
     solucion = False
     solucion_deseada = 1 #numero en el que la solucion es perfecta
     while (not solucion) and i!=1000:
-      puntuaciones = puntuar(self.cromosomas)
+      puntuaciones = puntuar(self.cromosomas,self.width,self.zt)
       if puntuaciones.count(solucion_deseada)>=1:
         solucion = True
         indice = puntuaciones.index(solucion_deseada)
