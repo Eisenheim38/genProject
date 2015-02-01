@@ -1,18 +1,18 @@
 def apt_gen_aprox(gen,w,zt):
 	wf=(w-4)/2
 	z=zt[i]*8 #vida zombie total
-	p=cromosoma.count(3)#potato-mine
-	r=cromosoma.count(2)#repeater
-	n=cromosoma.count(1)#peashooter
+	p=gen.count(3)#potato-mine
+	r=gen.count(2)#repeater
+	n=gen.count(1)#peashooter
 	damage=((r*2)+n)*wf+(p*8)
 	zombie_survivors=damage-z
 	return zombie_survivors
 
 def apt_simul_aprox(gen,w,zt):
 	z=zt[i]*8 #vida zombie total
-	p=cromosoma.count(3)#potato-mine
-	r=cromosoma.count(2)#repeater
-	n=cromosoma.count(1)#peashooter
+	p=gen.count(3)#potato-mine
+	r=gen.count(2)#repeater
+	n=gen.count(1)#peashooter
 	seed_damage=n+(r*2)
 	for i in xrange(0,w-4):
 		zombie_survivors=zombie_survivors-seed_damage
@@ -20,8 +20,17 @@ def apt_simul_aprox(gen,w,zt):
 		zombie_survivors=zombie_survivors-(seed_damage+(p*8))					
 	return zombie_survivors # si el resultado es negativo el gen se adapta mejor
 
-def puntuar(poblacion):
-	return []
+def puntuar(poblacion,w,zt):
+	lp=len(poblacion[0])
+	max_p=lp*w
+	points=0
+	puntuaciones=[]
+	for x in range(0,len(poblacion)):
+		for i in range(0,lp):
+			points=simul(poblacion[x][i],w,zt)+points
+		puntuaciones[x]=points/max_p
+		points=0
+	return puntuaciones
 
 def seleccionar(poblacion,puntuaciones):
 	return poblacion
