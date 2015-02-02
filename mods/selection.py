@@ -52,9 +52,9 @@ def seleccionar(poblacion,puntuaciones):
 	for p in ranking:
 		if p[0] == 1:
 			#el caso en el que el ranking sea el menor
-			t = minimo
+			t = minimo/n
 		else:
-			t = (1.0/p[0])*(minimo + (((maximo-minimo)*(i-1))/(p[0]-1)))
+			t = (1.0/n)*(minimo + (((maximo-minimo)*(p[0]-1))/(n-1)))
 		p[0] = t
 	ranking = sorted(ranking,reverse=True)
 	#print ranking
