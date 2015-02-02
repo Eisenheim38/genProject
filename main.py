@@ -9,7 +9,7 @@ def main():
   """
   whz = map(int,stdin.readline().split())
   zf = [0]*(whz[1]+1)
-  z = map(int,stdin.read().split())
+  z = map(int,stdin.readline().split())
   for i in z:
     zf[i] = zf[i]+1
   #p = Proy(10,1,[1,1,1])
