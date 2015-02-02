@@ -46,21 +46,22 @@ def seleccionar(poblacion,puntuaciones):
 		#print par[1],n
 		aux = par[0]
 	#print n
-	i = 1
 	for p in ranking:
-		if p[0] == 1:
-			#el caso en el que el ranking sea el menor
-			t = minimo
-		else:
-			t = (1.0/p[0])*(minimo + (((maximo-minimo)*(i-1))/(p[0]-1)))
+		t = (1.0/n)*(minimo + (((maximo-minimo)*(p[0]-1))/(n-1)))
 		p[0] = t
-		i=i+1
 	ranking = sorted(ranking,reverse=True)
 	#print ranking
 	nueva_poblacion = []
 	for i in range(size):
 		#print ranking[i][1]
-		nueva_poblacion.append(poblacion[ranking[i][1]])
+		comparador=random.random()
+		for x in range(0,len(poblacion)):
+			if x==len(poblacion)-1:
+				nueva_poblacion.append(poblacion[ranking[i][1]])
+				break
+			elif comparador<=ranking[x][0] and comparador >ranking[x+1][0]:
+				nueva_poblacion.append(poblacion[ranking[i][1]])
+				break
 	#print nueva_poblacion
 	return nueva_poblacion
 
