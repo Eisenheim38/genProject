@@ -22,12 +22,12 @@ def apt_simul_aprox(gen,w,zt):
 
 def puntuar(poblacion,w,zt):
 	lp=len(poblacion[0])
-	max_p=lp*w
+	max_p=lp*w+0.0
 	points=0
 	puntuaciones=[]
 	for x in range(len(poblacion)):
 		for i in range(lp):
-			points=simul(poblacion[x][i],w,zt,i)+points
+			points=simul(poblacion[x][i],w,zt,i+1)+points
 		puntuaciones.append([points/max_p,x])
 		points=0
 	sorted(puntuaciones,reverse=True)
@@ -54,9 +54,11 @@ def simul(gen,w,zt,i):
 				else:
 					z=z-8 #elimino el zombie totalmente
 				hp_zombiea=0 #zombie muerto 
-		if gen[w-pos_actual]!=3: #si la papa no ha matado al zombie , las semilla hacen su efecto
+
+		if(hp_zombiea >0):
 			z=z-seed_damage
 			hp_zombiea=hp_zombiea-seed_damage
+		
 		if(hp_zombiea<0):
 			hp_zombiea=8+(hp_zombiea)	#murio zombie otro toma su lugar y recibe el dano sobrante
 		elif(hp_zombiea==0):
@@ -64,7 +66,7 @@ def simul(gen,w,zt,i):
 		else:
 			pos_actual=pos_actual+1 #un zombie cubre al siguiente por lo tanto pueden avanza
 
-	return w-pos_actual # numero que representa que tan cerca llegaron los zombies 0 peor situacion w la mejor
+	return w-(pos_actual-1) # numero que representa que tan cerca llegaron los zombies 0 peor situacion w la mejor
 	
 
 
