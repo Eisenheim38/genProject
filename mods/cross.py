@@ -7,11 +7,12 @@ def cruce(poblacion,pc):
 	while (len(poblacion)>0):
 		if len(poblacion)==1: #solo queda un individuo no es posible cruzarlo
 			nueva_poblacion.append(poblacion[0])
+			break
 		else:
 		 	pareja1=poblacion[random.randint(0,len(poblacion)-1)] #seleccionamos la pareja 1 aleatoriamente
-		 	poblacion.remove(pareja1);								#ya este individuo esta fuera de nuestra poblacion de cruce
+		 	poblacion.remove(pareja1)							#ya este individuo esta fuera de nuestra poblacion de cruce
 			pareja2=poblacion[random.randint(0,len(poblacion)-1)] #seleccionamos la pareja 2 aleatoriamente
-			poblacion.remove(pareja2);								#ya este individuo esta fuera de nuestra poblacion de cruce
+			poblacion.remove(pareja2)								#ya este individuo esta fuera de nuestra poblacion de cruce
 			if random.random() <= pc: #se calcula la probabilidad de cruce
 				a=len(pareja1)
 				n=a/2
