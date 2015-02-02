@@ -33,7 +33,36 @@ def puntuar(poblacion,w,zt):
 	return sorted(puntuaciones,reverse=True)
 	
 def seleccionar(poblacion,puntuaciones):
-	return poblacion
+	size = len(poblacion)/2
+	minimo = 0.5
+	maximo = 1.5
+	n = 1
+	ranking = []
+	aux = puntuaciones[0][0]    #esta es la puntuacion del primer individuo
+	for par in puntuaciones:
+		ranking.append([n,par[1]])
+		if aux != par[0]:
+			n = n+1
+		#print par[1],n
+		aux = par[0]
+	#print n
+	i = 1
+	for p in ranking:
+		if p[0] == 1:
+			#el caso en el que el ranking sea el menor
+			t = minimo
+		else:
+			t = (1.0/p[0])*(minimo + (((maximo-minimo)*(i-1))/(p[0]-1)))
+		p[0] = t
+		i=i+1
+	ranking = sorted(ranking,reverse=True)
+	#print ranking
+	nueva_poblacion = []
+	for i in range(size):
+		#print ranking[i][1]
+		nueva_poblacion.append(poblacion[ranking[i][1]])
+	#print nueva_poblacion
+	return nueva_poblacion
 
 def simul(gen,w,zt,i):
 	z=zt[i]*8 #vida zombie total
@@ -66,6 +95,3 @@ def simul(gen,w,zt,i):
 			pos_actual=pos_actual+1 #un zombie cubre al siguiente por lo tanto pueden avanza
 
 	return w-(pos_actual-1) # numero que representa que tan cerca llegaron los zombies 0 peor situacion w la mejor
-	
-
-

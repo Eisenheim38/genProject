@@ -55,24 +55,27 @@ class Proy:
     i=0
     indice = 0 #Debe ser sustituido por el indice max de las puntuaciones
     solucion = False
-    solucion_deseada = 1 #numero en el que la solucion es perfecta
-    while (not solucion) and i!=1000:
+    solucion_deseada = 1.0   #numero en el que la solucion es perfecta
+    max_iter = 1000
+    while (not solucion) and i!=max_iter:
       puntuaciones = puntuar(self.cromosomas,self.width,self.zt)
-      if puntuaciones.count(solucion_deseada)>=1:
-        solucion = True
-        indice = puntuaciones.index(solucion_deseada)
+      #print puntuaciones
+      for p in puntuaciones:
+        if p[0] == solucion_deseada:
+          solucion = True
+          #print "Lo encontre!"
+          indice = p[1]
+          break
       seleccionados = seleccionar(self.cromosomas,puntuaciones) #esto deberia ser una lista con la mitad de la poblacion de mejor puntuacion
       cruzados = cruce(seleccionados,0.7)
       cruzados = mutar(cruzados,0.1)
       self.cromosomas = seleccionados + cruzados
       i = i+1
-    print "indice :"+str(i)
-    print puntuaciones
-    print self.cromosomas[indice]
-    #for c in self.cromosomas:
-    #  print c
-    #self.cromosomas = cruce(self.cromosomas,0.7)
-    #self.cromosomas = mutar(self.cromosomas,1)
-    #for c in self.cromosomas:
-    #  print c
-    #print len(self.cromosomas)
+    if i == max_iter:
+      #print max(puntuaciones)
+      indice = max(puntuaciones)[1]
+    #print "indice :"+str(i)
+    #print puntuaciones
+    for gen in self.cromosomas[indice]:
+      print gen[0],gen[1],gen[2],gen[3] 
+    #print self.cromosomas[indice]
