@@ -1,3 +1,5 @@
+import random
+
 def apt_gen_aprox(gen,w,zt):
 	wf=(w-4)/2
 	z=zt[i]*8 #vida zombie total
@@ -46,8 +48,13 @@ def seleccionar(poblacion,puntuaciones):
 		#print par[1],n
 		aux = par[0]
 	#print n
+	i=1
 	for p in ranking:
-		t = (1.0/n)*(minimo + (((maximo-minimo)*(p[0]-1))/(n-1)))
+		if p[0] == 1:
+			#el caso en el que el ranking sea el menor
+			t = minimo
+		else:
+			t = (1.0/p[0])*(minimo + (((maximo-minimo)*(i-1))/(p[0]-1)))
 		p[0] = t
 	ranking = sorted(ranking,reverse=True)
 	#print ranking
