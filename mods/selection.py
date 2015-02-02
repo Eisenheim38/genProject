@@ -30,9 +30,8 @@ def puntuar(poblacion,w,zt):
 			points=simul(poblacion[x][i],w,zt,i+1)+points
 		puntuaciones.append([points/max_p,x])
 		points=0
-	sorted(puntuaciones,reverse=True)
-	return puntuaciones
-
+	return sorted(puntuaciones,reverse=True)
+	
 def seleccionar(poblacion,puntuaciones):
 	return poblacion
 
